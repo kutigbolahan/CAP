@@ -1,6 +1,7 @@
 import 'package:cap/model/todomodel.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -42,7 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
         child: Column(
           children: <Widget>[
-
+           // WatchBoxBuilder(box: null, builder: null)
+          ValueListenableBuilder(
+              valueListenable: todoBox.listenable(),
+              builder: (BuildContext context, dynamic value, Widget child) {
+                 return  Container();
+              },
+           ),
           ],
         ),
       )),
