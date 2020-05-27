@@ -1,4 +1,6 @@
+import 'package:cap/model/todomodel.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -8,6 +10,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController detailsController = TextEditingController();
+  Box<TodoModel> todoBox;
+
+  @override
+  void initState() {
+  todoBox = Hive.box<TodoModel>('todoBoxName');
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     TextField(
                       controller: detailsController,
                       decoration: InputDecoration(
+                        //border: UnderlineInputBorder(),
                         hintText: 'Details'
                       ),
                     ),
@@ -66,7 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
                        child: RaisedButton(
                          color: Colors.black,
                          textColor: Colors.white,
-                         onPressed: (){}, 
+                         onPressed: (){
+                           final String title = titleController.text;
+                           final String detail = detailsController.text;
+                        
+                        TodoModel todo = TodoModel(title: title, detail:detail, isCompleted: false);
+                        
+                        todoBox.add(todo);
+                        Navigator.pop(context);
+                         }, 
                        child: Text('Add Task')
                        ),
                      )

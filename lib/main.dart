@@ -10,6 +10,7 @@ List<Box> boxList =[];
 Future<List<Box>> _openBox() async{
  var document = await getApplicationDocumentsDirectory();
   Hive.init(document.path);
+  Hive.registerAdapter(TodoModelAdapter(),0);
   var todoBox =await Hive.openBox<TodoModel>('todoBoxName');
  var themeBox = await Hive.openBox(darkModeBox);
   boxList.add(todoBox);
