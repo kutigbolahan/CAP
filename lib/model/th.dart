@@ -37,7 +37,7 @@ class Constants{
     appBarTheme: AppBarTheme(
       elevation: 0,
       textTheme: TextTheme(
-        title: TextStyle(
+        headline6: TextStyle(
           color: darkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
@@ -59,7 +59,7 @@ class Constants{
     appBarTheme: AppBarTheme(
       elevation: 0,
       textTheme: TextTheme(
-        title: TextStyle(
+        headline6: TextStyle(
           color: lightBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,

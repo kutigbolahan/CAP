@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       .cast<int>()
                       .where((key) => todos.get(key).isCompleted)
                       .toList();
-                } else if (todoFilter == TodoFilter.INCOMPLETED){
+                } else{
                   keys = todos.keys
                       .cast<int>()
                       .where((key) => !todos.get(key).isCompleted)
